@@ -13,6 +13,7 @@ Para executar esta aplicação, é necessário ter o Node.js v12.16.1 instalado.
 * [Express](https://expressjs.com/)
 * [Knex.js](http://knexjs.org/)
 * [React](https://reactjs.org/)
+* [Axios](https://github.com/axios/axios)
 
 ## Desenvolvedores
 
