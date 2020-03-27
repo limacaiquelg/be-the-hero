@@ -14,6 +14,8 @@ Para executar esta aplicação, é necessário ter o Node.js v12.16.1 instalado.
 * [Knex.js](http://knexjs.org/)
 * [React](https://reactjs.org/)
 * [Axios](https://github.com/axios/axios)
+* [React Native](https://reactnative.dev/)
+* [Expo](https://expo.io/)
 
 ## Desenvolvedores
 
