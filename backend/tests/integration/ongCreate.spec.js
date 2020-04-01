@@ -3,10 +3,6 @@ const app = require('../../src/app');
 const connection = require('../../src/database/connection');
 
 describe('Creating an ONG', () => {
-    beforeAll(async () => {
-        await connection.migrate.latest();
-    });
-
     afterAll(async () => {
         await connection('ongs').truncate();
         await connection.destroy();
