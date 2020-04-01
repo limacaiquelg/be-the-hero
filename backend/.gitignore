@@ -1,1 +1,11 @@
+# Bibliotecas do Node.JS
 node_modules
+
+# Bancos de Dados SQLite
+src/database/*.sqlite
+
+# Segredo de Autenticação
+config/auth.json
+
+# Coverage
+coverage

@@ -11,11 +11,11 @@ module.exports = {
             .limit(5)
             .offset((page - 1) * 5)
             .select([
-                'incidents.*', 
-                'ongs.name', 
-                'ongs.email', 
-                'ongs.whatsapp', 
-                'ongs.city', 
+                'incidents.*',
+                'ongs.name',
+                'ongs.email',
+                'ongs.whatsapp',
+                'ongs.city',
                 'ongs.uf'
             ]);
 
@@ -26,13 +26,13 @@ module.exports = {
 
     async create(request, response) {
         const { title, description, value } = request.body;
-        const ong_id = request.headers.authorization;
-        
+        const ong_id = request.ongId;
+
         const [ id ] = await connection('incidents').insert({
-           title, 
-           description, 
-           value, 
-           ong_id, 
+           title,
+           description,
+           value,
+           ong_id,
         });
 
         return response.json({ id });
@@ -40,12 +40,16 @@ module.exports = {
 
     async delete(request, response) {
         const { id } = request.params;
-        const ong_id = request.headers.authorization;
+        const ong_id = request.ongId;
 
         const incident = await connection('incidents')
             .where('id', id)
             .select('ong_id')
             .first();
+
+        if (!incident) {
+            return response.status(404).json({ error: 'Incident not found.' });
+        }
 
         if (incident.ong_id !== ong_id) {
             return response.status(401).json({ error: 'Operation not allowed.' });
