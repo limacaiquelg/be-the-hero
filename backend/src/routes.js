@@ -21,9 +21,9 @@ noAuthRoutes.get('/ongs', OngController.index);
 
 noAuthRoutes.post('/ongs', celebrate({
     [Segments.BODY]: Joi.object().keys({
-        id: Joi.string().required().min(3).max(32),
-        password: Joi.string().required(),
-        name: Joi.string().required(),
+        id: Joi.string().required().min(2).max(32),
+        password: Joi.string().required().min(8).max(32),
+        name: Joi.string().required().min(2).max(255),
         email: Joi.string().required().email(),
         whatsapp: Joi.string().required().length(13),
         city: Joi.string().required(),
@@ -54,13 +54,12 @@ authRoutes.get('/profile', celebrate({
 
 authRoutes.post('/incidents', celebrate({
     [Segments.BODY]: Joi.object().keys({
-        title: Joi.string().required(),
-        description: Joi.string().required(),
+        title: Joi.string().required().min(2).max(32),
+        description: Joi.string().required().min(2),
         value: Joi.number().required().min(0.01),
     }),
 
     [Segments.HEADERS]: Joi.object({
-        'content-type': Joi.string().required().equal('application/json'),
         authorization: Joi.string().required(),
     }).unknown(),
 }), IncidentController.create);
