@@ -1,11 +1,18 @@
+# Coverage
+coverage
+
 # Bibliotecas do Node.JS
 node_modules
 
 # Bancos de Dados SQLite
-src/database/*.sqlite
+src/database/db.sqlite
+src/database/test.sqlite
 
 # Segredo de Autenticação
 config/auth.json
 
-# Coverage
-coverage
+# Variáveis de Ambiente
+.env
+
+# Procfile
+Procfile
